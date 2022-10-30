@@ -28,6 +28,11 @@ class Stack {
     this.height--;
     return currentTop.value;
   }
+
+  peek() {
+    if (this.height < 1) return;
+    return this.top.value;
+  }
 }
 
 exports.Stack = Stack;
