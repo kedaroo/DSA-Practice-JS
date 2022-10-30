@@ -17,6 +17,7 @@ class DoublyLinkedList {
   push(value) {
     const newNode = new Node(value);
     this.length < 1 ? (this.head = newNode) : (newNode.prev = this.tail);
+    this.tail.next = newNode;
     this.tail = newNode;
     this.length++;
     return this.length;
