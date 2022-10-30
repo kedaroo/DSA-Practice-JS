@@ -127,6 +127,15 @@ class SinglyLinkedList {
     return node.value;
   }
 
+  // Time Complexity: O(n)
+  set(index, value) {
+    if (index < 0 || index >= this.length) return false;
+    let node = this.head;
+    for (let i = 0; i < index; i++) node = node.next;
+    node.value = value;
+    return true;
+  }
+
   forEach(fn) {
     let currNode = this.head;
 
