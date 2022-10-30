@@ -16,8 +16,14 @@ class DoublyLinkedList {
   // Time Complexity: O(1)
   push(value) {
     const newNode = new Node(value);
-    this.length < 1 ? (this.head = newNode) : (newNode.prev = this.tail);
-    this.tail.next = newNode;
+
+    if (this.length < 1) {
+      this.head = newNode;
+    } else {
+      newNode.prev = this.tail;
+      this.tail.next = newNode;
+    }
+
     this.tail = newNode;
     this.length++;
     return this.length;
@@ -61,6 +67,39 @@ class DoublyLinkedList {
 
     this.length--;
     return head.value;
+  }
+
+  // Time Complexity: O(n)
+  insert(index, value) {
+    if (index < 0 || index > this.length) return -1;
+    if (index === 0) return this.unshift(value);
+    if (index === this.length) return this.push(value);
+
+    const newNode = new Node(value);
+
+    let prevNode;
+    let currNode;
+    if (index < this.length / 2) {
+      currNode = this.head;
+      for (let i = 0; i < index; i++) {
+        prevNode = currNode;
+        currNode = currNode.next;
+      }
+    } else {
+      currNode = this.tail;
+      for (let i = this.length; i >= index; i--) {
+        prevNode = currNode;
+        currNode = currNode.prev;
+      }
+    }
+
+    prevNode.next = newNode;
+    newNode.prev = prevNode;
+    newNode.next = currNode;
+    currNode.prev = newNode;
+
+    this.length++;
+    return this.length;
   }
 
   // Time Complexity: O(n)
