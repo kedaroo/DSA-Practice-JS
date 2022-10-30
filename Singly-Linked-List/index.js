@@ -42,7 +42,7 @@ class SinglyLinkedList {
     return currentHead.value;
   }
 
-  traverse(fn) {
+  forEach(fn) {
     let currNode = this.head;
 
     while (currNode) {
@@ -51,3 +51,5 @@ class SinglyLinkedList {
     }
   }
 }
+
+exports.SinglyLinkedList = SinglyLinkedList;

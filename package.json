@@ -1,0 +1,22 @@
+{
+  "name": "dsa-practice-js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kedaroo/DSA-Practice-JS.git"
+  },
+  "author": "Kedar Basutkar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kedaroo/DSA-Practice-JS/issues"
+  },
+  "homepage": "https://github.com/kedaroo/DSA-Practice-JS#readme",
+  "devDependencies": {
+    "jest": "^29.2.2"
+  }
+}
