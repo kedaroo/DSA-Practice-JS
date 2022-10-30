@@ -22,7 +22,7 @@ class SinglyLinkedList {
     if (this.length < 1) {
       this.tail = newNode;
     }
-    
+
     this.length++;
     return this.length;
   }
@@ -40,5 +40,14 @@ class SinglyLinkedList {
 
     this.length--;
     return currentHead.value;
+  }
+
+  traverse(fn) {
+    let currNode = this.head;
+
+    while (currNode) {
+      fn(currNode.value);
+      currNode = currNode.next;
+    }
   }
 }
