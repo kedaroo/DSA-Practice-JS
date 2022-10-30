@@ -54,6 +54,28 @@ class SinglyLinkedList {
     return this.length;
   }
 
+  // Time Complexity: O(n)
+  pop() {
+    if (this.length < 1) return;
+    const lastNode = this.tail;
+
+    if (this.length === 1) {
+      this.head = null;
+      this.tail = null;
+    } else {
+      let prevNode;
+      let currNode = this.head;
+      while (currNode.next) {
+        prevNode = currNode;
+        currNode = currNode.next;
+      }
+      this.tail = prevNode;
+    }
+
+    this.length--;
+    return lastNode.value;
+  }
+
   forEach(fn) {
     let currNode = this.head;
 
