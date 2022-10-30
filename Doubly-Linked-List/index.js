@@ -38,6 +38,18 @@ class DoublyLinkedList {
     this.length--;
     return tail.value;
   }
+
+  // Time Complexity: O(1)
+  unshift(value) {
+    const newNode = new Node(value);
+
+    this.length < 1 ? (this.tail = newNode) : (newNode.next = this.head);
+
+    this.head = newNode;
+
+    this.length++;
+    return this.length;
+  }
 }
 
 exports.DoublyLinkedList = DoublyLinkedList;
