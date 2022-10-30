@@ -44,11 +44,22 @@ class DoublyLinkedList {
     const newNode = new Node(value);
 
     this.length < 1 ? (this.tail = newNode) : (newNode.next = this.head);
-
     this.head = newNode;
 
     this.length++;
     return this.length;
+  }
+
+  // Time Complexity: O(1)
+  shift() {
+    if (this.length < 1) return;
+    if (this.length === 1) this.tail = null;
+
+    const head = this.head;
+    this.head = this.head.next;
+
+    this.length--;
+    return head.value;
   }
 }
 
