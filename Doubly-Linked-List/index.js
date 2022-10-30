@@ -152,13 +152,27 @@ class DoublyLinkedList {
       }
     } else {
       node = this.tail;
-      for (let i = this.length - 1; i > index; i--) {
-        console.log(node.value);
-        node = node.prev;
-      }
+      for (let i = this.length - 1; i > index; i--) node = node.prev;
     }
 
     return node.value;
+  }
+
+  set(index, value) {
+    if (index < 0 || index >= this.length) return false;
+
+    let node;
+    if (index < this.length / 2) {
+      node = this.head;
+      for (let i = 0; i < index; i++) node = node.next;
+      node.value = value;
+    } else {
+      node = this.tail;
+      for (let i = this.length - 1; i > index; i--) node = node.prev;
+      node.value = value;
+    }
+
+    return true;
   }
 
   // Time Complexity: O(n)
