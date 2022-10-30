@@ -61,6 +61,16 @@ class DoublyLinkedList {
     this.length--;
     return head.value;
   }
+
+  // Time Complexity: O(n)
+  forEach(fn) {
+    let currNode = this.head;
+
+    while (currNode) {
+      fn(currNode.value);
+      currNode = currNode.next;
+    }
+  }
 }
 
 exports.DoublyLinkedList = DoublyLinkedList;
