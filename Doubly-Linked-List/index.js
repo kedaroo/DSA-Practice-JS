@@ -140,6 +140,28 @@ class DoublyLinkedList {
   }
 
   // Time Complexity: O(n)
+  get(index) {
+    if (index < 0 || index >= this.length) return;
+
+    let node;
+    if (index < this.length / 2) {
+      node = this.head;
+      for (let i = 0; i < index; i++) {
+        console.log(node.value);
+        node = node.next;
+      }
+    } else {
+      node = this.tail;
+      for (let i = this.length - 1; i > index; i--) {
+        console.log(node.value);
+        node = node.prev;
+      }
+    }
+
+    return node.value;
+  }
+
+  // Time Complexity: O(n)
   forEach(fn) {
     let currNode = this.head;
 
