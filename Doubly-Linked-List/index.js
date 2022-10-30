@@ -21,6 +21,23 @@ class DoublyLinkedList {
     this.length++;
     return this.length;
   }
+
+  // Time Complexity: O(1)
+  pop() {
+    if (this.length < 1) return;
+
+    const tail = this.tail;
+    this.tail = this.tail.prev;
+
+    if (this.length === 1) {
+      this.head = null;
+    } else {
+      this.tail.next = null;
+    }
+
+    this.length--;
+    return tail.value;
+  }
 }
 
 exports.DoublyLinkedList = DoublyLinkedList;
