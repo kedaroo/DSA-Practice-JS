@@ -42,6 +42,18 @@ class SinglyLinkedList {
     return currentHead.value;
   }
 
+  // Time Complexity: O(1)
+  push(value) {
+    const newNode = new Node(value);
+
+    this.length < 1 ? (this.head = newNode) : (this.tail.next = newNode);
+
+    this.tail = newNode;
+
+    this.length++;
+    return this.length;
+  }
+
   forEach(fn) {
     let currNode = this.head;
 
