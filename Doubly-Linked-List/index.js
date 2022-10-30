@@ -34,11 +34,12 @@ class DoublyLinkedList {
     if (this.length < 1) return;
 
     const tail = this.tail;
-    this.tail = this.tail.prev;
 
     if (this.length === 1) {
       this.head = null;
+      this.tail = null;
     } else {
+      this.tail = this.tail.prev;
       this.tail.next = null;
     }
 
@@ -50,7 +51,13 @@ class DoublyLinkedList {
   unshift(value) {
     const newNode = new Node(value);
 
-    this.length < 1 ? (this.tail = newNode) : (newNode.next = this.head);
+    if (this.length < 1) {
+      this.tail = newNode;
+    } else {
+      this.head.prev = newNode;
+      newNode.next = this.head;
+    }
+
     this.head = newNode;
 
     this.length++;
@@ -100,6 +107,36 @@ class DoublyLinkedList {
 
     this.length++;
     return this.length;
+  }
+
+  // Time Complexity: O(n)
+  remove(index) {
+    if (index < 0 || index >= this.length) return;
+    if (index === 0) return this.shift();
+    if (index === this.length - 1) return this.pop();
+
+    let prevNode;
+    let currNode;
+    if (index < this.length / 2) {
+      currNode = this.head;
+      for (let i = 0; i < index; i++) {
+        prevNode = currNode;
+        currNode = currNode.next;
+      }
+      prevNode.next = currNode.next;
+      currNode.next.prev = currNode.prev;
+    } else {
+      currNode = this.tail;
+      for (let i = this.length; i >= index; i--) {
+        prevNode = currNode;
+        currNode = currNode.prev;
+      }
+      prevNode.prev = currNode.prev;
+      currNode.prev.next = currNode.next;
+    }
+
+    this.length--;
+    return currNode.value;
   }
 
   // Time Complexity: O(n)
