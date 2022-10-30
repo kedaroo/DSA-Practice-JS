@@ -12,4 +12,15 @@ class DoublyLinkedList {
     this.tail = null;
     this.length = 0;
   }
+
+  // Time Complexity: O(1)
+  push(value) {
+    const newNode = new Node(value);
+    this.length < 1 ? (this.head = newNode) : (newNode.prev = this.tail);
+    this.tail = newNode;
+    this.length++;
+    return this.length;
+  }
 }
+
+exports.DoublyLinkedList = DoublyLinkedList;
